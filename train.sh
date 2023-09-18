@@ -1,0 +1,18 @@
+CUDA_VISIBLE_DEVICES=1 python my_lora_trainer.py \
+    --model_name /data1/ljx/cpt/Codellama-7b-hf \
+    --dataset_path /home/ljx/new_cache_server32_0411/KQAPro/dataset/ \
+    --seq_length 1024 \
+    --cache_dir /data1/ljx/result/lora/{}/cache/.MODEL_CACHE \
+    --output_dir /data1/ljx/result/lora/{} \
+    --log_with wandb \
+    --logging_steps 20 \
+    --save_steps 520 \
+    --load_in_8bit \
+    --wandb_project code_llama \
+    --use_peft \
+    --batch_size 32 \
+    --gradient_accumulation_steps 2 \
+    --num_train_epochs 30 \
+    --learning_rate 8e-5 \
+    --train_size "1w" \
+    --dataset_text_field "text"
